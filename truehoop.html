@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Headers from Comma-Separated String</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        display: grid;
+      }
+
+      /* Style for the fixed header */
+      #fixedHeader {
+        position: fixed;
+        top: 0;
+        width: min-content;
+
+        z-index: 1000;
+        padding: 10px;
+      }
+
+      /* Style for the h1 in the fixed header */
+      #fixedHeader h1 {
+        margin: 0;
+      }
+
+      /* Style for the container */
+      #headerList {
+        margin-left: 200px; /* Adjust left margin to accommodate fixed header width */
+        max-width: 800px;
+        padding: 20px;
+        font-size: 30px;
+      }
+
+      /* Remove bullet points from the list */
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 0;
+      }
+
+      /* Style for headers */
+      li {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+      #container {
+        display: flex;
+
+        max-width: 90vw; /* Adjust the maximum width as needed */
+      }
+      /* Style for additional strings */
+      .additional {
+        font-size: 14px;
+        margin-top: 20px;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="fixedHeader">
+        <h1>The NBA’s most important source of cash</h1>
+      </div>
+
+      <div id="headerList"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var headersString =
+          " Apollo Global, deep pockets with ties to the NBA, Jeffrey Epstein and Buzzy. " +
+          " The earliest days of Sears Roebuck, the CIA, and United Fruit." +
+          " 1950s and 60s: Buzzy at Princeton, the CIA messes with mind control, Leon Black’s dad. " +
+          " Beverly Hills in the 1960s, 70s, and 80s." +
+          " Buzzy the banker." +
+          " In business with criminals." +
+          " Everyone in this story owns planes." +
+          " “The biggest crime in American history”." +
+          " “A stealth invasion of the US banking industry”." +
+          "  Jeffrey Epstein’s tutor." +
+          "  Richard Nixon and Adnan Khashoggi." +
+          "  The Dechert Report." +
+          "  Nazis at the Waldorf Astoria." +
+          "  Hitler’s American business friends." +
+          "  Epstein teaches at private school." +
+          "  The Emirates and the NBA." +
+          "  Pablo Escobar in a Celtics hat." +
+          "  A new kind of super rich." +
+          "  The NBA goes to Abu Dhabi." +
+          "  Steve Bannon and Jeffrey Epstein." +
+          "  A Robert Ludlum spy thriller"; // Replace this string with your comma-separated list
+        var additionalStrings = [
+          "To the top executives of the NBA, Apollo Global is arguably the most important source of money on planet Earth. The billionaires who run the 76ers and Hawks made fortunes at Apollo. Apollo was born out of Drexel Burnham Lambert, whose alumni are a who’s who of the billionaire set. The banker who raised money for Tilman Fertitta to buy the Rockets worked with Apollo’s founders at Drexel. Apollo is around the corner from league headquarters; NBA commissioner Adam Silver is still close to his college roommate from Duke, who is Apollo’s co-president. Anyone who cares about the “behind the curtain” NBA should care about Apollo’s recent crisis: According to an outside investigation, Apollo’s founder, longtime CEO, and chairman, Leon Black, paid Jeffrey Epstein $158 million. Black was possibly Epstein’s main source of cash over the last decade." +
+            "*" +
+            "Anyone who cares about the behind the curtain NBA should care about Apollo’s recent crisis: According to an outside investigation, Apollo’s founder, longtime CEO, and chairman, Leon Black, paid Jeffrey Epstein $158 million. Black was possibly Epstein’s main source of cash over the last decade." +
+            "*" +
+            "There’s a mountain of evidence that Epstein was not only a predator and a pedophile, but also a schemer of a more profound variety, who—according to depositions—trafficked underaged women to powerful men and bragged about the leverage that resulted. There were compromising photos, compromising anecdotes, reportedly hidden cameras staffed by men in a secret room, and a trove of photos and video that has yet to see the light of day. " +
+            "*" +
+            "Epstein could pull the levers of power like no one else. In the mid-2000s, when Palm Beach police identified dozens of women telling similar stories of abuse, Epstein seemed destined for a long prison sentence. But a legal team befitting a president—Alan Dershowitz, Ken Starr, Roy Black, Gerald Lefcourt—rushed to Epstein’s aid and negotiated a sweetheart deal from the U.S. Attorney, who himself went on to be a U.S. cabinet secretary." +
+            "*" +
+            "Imagine what a guy like Epstein, who’d had powerbrokers like Bill Clinton and Prince Andrew on his private jet, could do in return for $158 million. " +
+            "*" +
+            "Why did Leon Black pay Epstein so much? For what?" +
+            "*" +
+            "It’s a giant and profound question in understanding how the world of NBA billionaires works. " +
+            "*" +
+            "Apollo’s three-member conflicts committee commissioned an outside investigation that found Black paid all those millions for “legitimate advice on trust and estate planning, tax issues, issues relating to artwork, Black’s airplane, Black’s yacht, and other similar matters.” " +
+            "*" +
+            "The New York Times talked to experts in tax and estate matters, one of whom said “you could be the best lawyer in Manhattan working on the most complicated trusts and estates and it would never come anywhere close to that kind of money,” he said. Others pointed out that for $158 million you could purchase an entire law firm." +
+            "*" +
+            "Largely, though, the media seems to accept the report’s conclusions—The Times notes the report, from the law firm Dechert, “cleared Mr. Black of any wrongdoing.” Apollo’s stock has bounced back nicely since. Black’s Apollo co-founders, like 76ers governor Josh Harris—have been largely insulated from the fallout. " +
+            "*" +
+            "But looking deeper, that report raises as many questions as it answers. At TrueHoop, we are dissatisfied:" +
+            "*" +
+            "The Dechert attorney who led the investigation has reportedly known Epstein since the 1980s." +
+            "*" +
+            "The report makes conclusions based on evidence (interviews, documents, and Black’s text messages) which is not included." +
+            "*" +
+            "Leon Black was exonerated, as far as the report goes, but nevertheless stepped down as Apollo’s CEO. Why?" +
+            "*" +
+            "Epstein, the report notes, was fixated on using Black to reach others at Apollo, including co-founders like Josh Harris. How far did that go?" +
+            "*" +
+            "And then there’s the Hollywood-esque character of A.B. “Buzzy” Krongard. He’s married to a former Apollo executive, sits on Apollo’s three-person conflicts committee which commissioned the Dechert report, and is fascinating: " +
+            "*" +
+            "The 9/11 commission looked into unusual investments that may have profited from 9/11. No evidence of wrongdoing was found, but Krongard’s name was in the middle of it all." +
+            "*" +
+            "He’s the investment banker who took Microsoft public (which made Bill Gates, Clippers billionaire Steve Ballmer, and deceased Blazers billionaire Paul Allen rich)." +
+            "*" +
+            "“He would subscribe to these magazines which basically sold armaments,” a colleague told the Baltimore Sun. “If you wanted to get a shoulder-fired ground-to-air missile, you could order them through these magazines.” He trained with SWAT teams on the weekend, reportedly had “dangerous fish” in his basement, and a bucket of rice—to jam his fingers into to make them tougher." +
+            "*" +
+            "And here’s where it gets very Hollywood: He’s CIA. Or at least sometimes. Was he working with the Agency all through the decades when he was ostensibly a banker? Perhaps. His banking colleagues joke about it. In a move that reportedly pissed off the CIA, a banker named Edwin F. Hale Sr. said Buzzy recruited him to the CIA in 1992. " +
+            "*" +
+            "But Hale and Krongard are birds of a feather: A few years apart, both Hale and Krongard were caught trying to carry loaded guns onto planes at Baltimore Washington International Airport. Krongard’s was a 9mm. Hale had a .38." +
+            "*" +
+            "A.B. “Buzzy” Krongard is a master of secrecy. As executive director of the CIA after 9/11, he gave a 2001 presentation to investors, broadcast on C-SPAN about the war on terror. “I believe it will be won,” he explained, “in large part by forces you will not see deploy, fighting engagements you will not witness, and things occurring which you do not want to know about.”" +
+            "*" +
+            "At times, Krongard has had prominent CIA jobs, and he is amazing at tough-guy talk. After 9/11, he said things like:" +
+            "*" +
+            "“We at CIA have been restricted from talking to people in the world other than Mother Teresa.”" +
+            "*" +
+            "“Certainly the rules have changed and today there’s only one rule, and that’s: there are no rules.”" +
+            "*" +
+            "“How do we resolve the tension between between prevention and protection vs. traditional civil liberties? Will racial profiling be re-examined? Will a national identification system be implemented? Will wiretap and other fourth amendment rights be revisited?”" +
+            "*" +
+            "As executive director he reportedly helped set up “black sites” where terrorism suspects were taken." +
+            "*" +
+            "And his work at the CIA includes a famously “outrageous” (in the words of an elected official) episode of conflicted interest. " +
+            "*" +
+            "Buzzy had been instrumental in setting up CIA work for the private military contractor Blackwater, and at one point served on a Blackwater advisory panel. Blackwater came to be embroiled in scandal, accused of everything from mass murder to arms smuggling. A State Department inspector general took up multiple investigations. But his subordinates grew frustrated that their boss, the inspector general, may have in fact been stymying their Blackwater research. " +
+            "*" +
+            "It turns out their supervisor, the inspector general, the man accused of going soft investigating Blackwater—was Buzzy’s brother, Howard “Cookie” Krongard. Cookie would ultimately resign. (Headline: “The cookie crumbles.”)" +
+            "*" +
+            "It’s a longer story we’ll explore, but fast forward to 2021 and Buzzy, who’s 84 now, owns a chunk of Apollo Global, where he is on the board. And as of 2016, Apollo owns Blackwater, which has been through several iterations and is now called Constellis. " +
+            "*" +
+            "The Apollo conflicts committee was charged with exploring the well-hidden secrets of the extremely wealthy and powerful, especially Leon Black and Jeffrey Epstein. Is a master of secrecy, a former CIA executive with evident active current conflicts (equity in Apollo, ties to Blackwater), and a history of “outrageous” apparent conflicted interest, the person you’d pick if you actually wanted to unearth and disseminate the truth?" +
+            "*" +
+            "Epstein’s story is the most troubling. It raises every question, tweaks every fear. Why do so many characters in that story have ties to intelligence, which is supposed to be about keeping us safe? Why do so many characters in that story have ties to the NBA, which is supposed to be about basketball?" +
+            "*",
+          // Add more additional strings as needed
+        ];
+        var headersArray = headersString.split(".").map((item) => item.trim());
+
+        var headerContainer = document.getElementById("headerList");
+        var headerHTML = "<ul>";
+        headersArray.forEach(function (header, index) {
+          headerHTML += "<li>" + header;
+          if (additionalStrings[index]) {
+            var formattedString = additionalStrings[index].replace(
+              /\*/g,
+              "<br><br>"
+            );
+            headerHTML += "<p class='additional'>" + formattedString + "</p>";
+          }
+          headerHTML += "</li>";
+        });
+        headerHTML += "</ul>";
+
+        headerContainer.innerHTML = headerHTML;
+      });
+    </script>
+  </body>
+</html>
